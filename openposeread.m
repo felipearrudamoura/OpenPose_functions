@@ -36,7 +36,7 @@
 
 function data=openposeread(diretorio)
 
-pkg load io
+pkg load io %(comment this line if you are running using Matlab puting a % in the begining of the line | Se você estiver rodando no Matlab, coloque o símbolo % no começo dessa linha)
 
 
 D = diretorio;
