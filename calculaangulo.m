@@ -11,5 +11,5 @@ segment_2 = dados (:,5:6) - dados (:,3:4); % Os segmentos sao definidos atraves 
 
 %% Calcula o angulo relativo do joelho
 for i = 1:nlin;
-    angulo(i, 1) = acosd(dot(Segment_1(i,:), segment_2(i,:)) / (norm(segment_1(i, :)) * norm(segment_2(i, :))));
+    angulo(i, 1) = acosd(dot(segment_1(i,:), segment_2(i,:)) / (norm(segment_1(i, :)) * norm(segment_2(i, :))));
 end
