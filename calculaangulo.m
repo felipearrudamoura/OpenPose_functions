@@ -4,12 +4,14 @@
 %% Function to calculate the angle from 3 pairs of coordinates
 
 function [angulo] = calculaangulo(dados)
+    nlin = size(dados, 1); % define o numero de linhas do arquivo
+    segment_1 = dados (:, 1:2) - dados (:, 3:4); % Os segmentos sao definidos atraves da subtracao das coordenadas dos pontos das extremidades pelas coordenadas do vertice (no caso, o joelho).
+    segment_2 = dados (:, 5:6) - dados (:, 3:4); % Os segmentos sao definidos atraves da subtracao das coordenadas dos pontos das extremidades pelas coordenadas do vertice (no caso, o joelho).
 
-nlin = size(dados,1); % define o numero de linhas do arquivo
-segment_1 = dados (:,1:2) - dados (:,3:4); % Os segmentos sao definidos atraves da subtracao das coordenadas dos pontos das extremidades pelas coordenadas do vertice (no caso, o joelho).
-segment_2 = dados (:,5:6) - dados (:,3:4); % Os segmentos sao definidos atraves da subtracao das coordenadas dos pontos das extremidades pelas coordenadas do vertice (no caso, o joelho).
+    angulo = zeros(nlin, 1); % optimize processing speed with memory space pre-allocation
 
-%% Calcula o angulo relativo do joelho
-for i = 1:nlin;
-    angulo(i, 1) = acosd(dot(segment_1(i,:), segment_2(i,:)) / (norm(segment_1(i, :)) * norm(segment_2(i, :))));
-end
+
+    %% Calcula o angulo relativo do joelho
+    for i = 1:nlin;
+        angulo(i, 1) = acosd(dot(segment_1(i,:), segment_2(i,:)) / (norm(segment_1(i, :)) * norm(segment_2(i, :))));
+    end
