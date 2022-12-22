@@ -10,8 +10,8 @@ function [angulo] = calculaangulo(dados)
 
     angulo = zeros(nlin, 1); % optimize processing speed with memory space pre-allocation
 
+
     %% Calcula o angulo relativo do joelho
     for i = 1:nlin;
         angulo(i, 1) = acosd(dot(segment_1(i,:), segment_2(i,:)) / (norm(segment_1(i, :)) * norm(segment_2(i, :))));
     end
-end
